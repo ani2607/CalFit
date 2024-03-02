@@ -1,17 +1,16 @@
 import Navbar from "../components/Navbar"
 
-
-const Home = () => {
+const DashBoard = () => {
   return (
     <>
     <nav>
         <Navbar/>
     </nav>
     <div className="text-xl text-white mt-72">
-      this is home page
+      this is dashboard
     </div>
     </>
   )
 }
 
-export default Home
+export default DashBoard
