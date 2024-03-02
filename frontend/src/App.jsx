@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Bmr from "./pages/Bmr";
+import Diet from "./pages/Diet";
 
 
 function App() {
@@ -16,18 +18,20 @@ function App() {
 
   return (
 
-    <div className="" >
+    
     <Router>
       
       <Routes>
-        <Route exact path="/" element = {<Home/>}/>
-        <Route path="/signup" element={<Signup/>}/>
+        <Route exact path="/signup" element={<Signup/>}/>
+        <Route  path="/" element = {<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/dashboard" element = {<Dashboard/>}/>
+        <Route path="/bmr" element = {<Bmr/>}/>
+        <Route path="/diet" element = {<Diet/>}/>
       </Routes>
 
     </Router>
-    </div>
+    
   )
 }
 

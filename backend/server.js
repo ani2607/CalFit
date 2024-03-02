@@ -5,7 +5,8 @@ import loginRoute from './router/User/loginRoute.js';
 import signupRoute from './router/User/signupRoute.js';
 import cors from 'cors';
 import cookieParser from "cookie-parser";
-import isAuth  from './middleware/authentication.js'
+import isAuth  from './middleware/authentication.js';
+import bmrRoute from './router/BMR_Calculator/BMR_CalRoute.js';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 // routers
 app.use('/login',loginRoute);
 app.use('/signup',signupRoute);
+app.use('/bmr',isAuth,bmrRoute);
 
 app.post('/logout',isAuth,(req,res)=>{
 
