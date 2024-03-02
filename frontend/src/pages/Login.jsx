@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {Navigate} from 'react-router-dom'
 
-const backendUrl = import.meta.VITE_REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 const Login = () => {
 
@@ -15,33 +15,33 @@ const Login = () => {
   }
 
     const handleSubmit = async(e)=>{
-         e.preventDefault();
-        try {
-            // const res = await()
-            const res = await fetch(`${backendUrl}/login`,{
+      e.preventDefault();
+
+      try {
+          const res = await fetch(`${backendUrl}/login`,{
               method : 'POST',
               headers: {"Content-Type": "application/json"},
               body : JSON.stringify(data),
               credentials : "include"
           });
 
-            console.log(res);
-            alert("successfully logged in");
+          if(res.status === 300){
+              alert("Please enter correct email");
+          }
 
-            setNavigate(true);
-            setEmail('');
-            setPassword('');
-            
-        } catch (error) {
-            console.log(error);
-            alert("error while logging");
-        }
+          setEmail('');
+          setPassword('');
+          setNavigate(true);
+          console.log(res);
+      } catch (error) {
+          
+          alert(error.message);
+      }
+  }
 
-    }
-
-    if(navigate){
-        return <Navigate to={'/'}  />
-    }
+  if(navigate){
+      return <Navigate to={'/'} />
+  }
 
   return (
     <div className="text-white w-96 h-96 backdrop-blur-sm bg-black/60
@@ -67,7 +67,7 @@ const Login = () => {
 
         <div className="btn text-center mt-5">
 
-        <button onClick={handleSubmit}  className="text-xl bg-white text-black rounded-xl p-2  ">
+        <button onClick={handleSubmit} type="submit"  className="text-xl bg-white text-black rounded-xl p-2  ">
             Submit
         </button>
         </div>

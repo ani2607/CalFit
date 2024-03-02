@@ -10,7 +10,7 @@ import { IoExitOutline } from "react-icons/io5";
 import {Link} from 'react-router-dom'
 import {Navigate} from 'react-router-dom'
 
-const backendUrl = import.meta.VITE_REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_REACT_APP_BACKEND_URL;  
 
 
 export default function Navbar() {

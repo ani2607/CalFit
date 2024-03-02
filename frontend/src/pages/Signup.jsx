@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
-const backendUrl = import.meta.VITE_REACT_APP_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 const SignUp = () => {
   const [username, setUserName] = useState("");
@@ -17,34 +17,30 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // const res = await()
-      const res = await fetch(`${backendUrl}/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+        
+        try {
+            const res = await fetch(`${backendUrl}/signup`,{
+                method : 'POST',
+                headers: {"Content-Type": "application/json"},
+                body:JSON.stringify(data)
+            })
+            if(res.status === "300"){
+                alert("Please enter correct email");
+            }
+            console.log(res);
+            setUserName('');
+            setEmail('');
+            setPassword('');
+            setNavigate(true);
+        } catch (error) {
+            alert(error.message);
+        }
 
-      console.log(res);
-      if (!res) {
-        alert("error while logging");
-      } else {
-        alert("successfully logged in");
-        setNavigate(true);
-      }
-
-      setEmail("");
-      setPassword("");
-      setUserName("");
-    } catch (error) {
-      console.log(error);
-      alert("error while signing in");
     }
-  };
 
-  if (navigate) {
-    return <Navigate to={"/login"} />;
-  }
+    if(navigate){
+        return <Navigate to={'/login'} />
+    }
   return (
     <div
       className="text-white w-96 h-96 backdrop-blur-sm bg-black/60
