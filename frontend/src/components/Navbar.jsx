@@ -42,7 +42,7 @@ export default function Navbar() {
 
 
     return (
-        <div className='flex text-white   items-center h-20  justify-between p-6 top-0 sticky z-20 border rounded-xl mt-1 '>
+        <div className='flex text-white   items-center h-20  justify-between p-6 top-0 sticky z-20  rounded-xl mt-1 '>
             
             <div className="right  ">
                 <Link to="/">
