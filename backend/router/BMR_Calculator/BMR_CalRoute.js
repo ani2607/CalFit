@@ -3,15 +3,15 @@ const router = Router();
 
 router.post('/',async(req,res)=>{
     const {BodyWeight,Age,Height,Gender,ActivityFactor,TypeOfDiet} = req.body;
-    const MorningMeal[][] = req.body.MorningMeal;
-    const AfterNoonMeal[][] = req.body.AfterNoonMeal;
-    const EveningMeal[][] = req.body.EveningMeal;
-    const NightMeal[][] = req.body.NightMeal;
+    const MorningMeal = req.body.MorningMeal;
+    const AfterNoonMeal = req.body.AfterNoonMeal;
+    const EveningMeal = req.body.EveningMeal;
+    const NightMeal = req.body.NightMeal;
 
     try {
 
         //Calculation of final BMR --> Total clories required for the whole day     (total calories == BMR)
-        if(Gender == Male){
+        if(Gender == 'Male'){
             let BMR = (10*BodyWeight) + (6.25*Height) - (5*Age) + 5;
             if(ActivityFactor == 'Sedentary'){
                 // little to no exercise, desk job
@@ -105,22 +105,22 @@ router.post('/',async(req,res)=>{
                 else if(meal[0] == 'upma'){
                     CaloriesIntake += (275*meal[1]);
                 }
-                else if(meal[0] == 'Uttapam'){
+                else if(meal[0] == 'uttapam'){
                     CaloriesIntake += (225*meal[1]);
                 }
-                else if(meal[0] == 'Idli Sambar'){
+                else if(meal[0] == 'idli Sambar'){
                     CaloriesIntake += (275*meal[1]);
                 }
-                else if(meal[0] == 'Dosa with Coconut Chutney'){
+                else if(meal[0] == 'dosa with coconut chutney'){
                     CaloriesIntake += (325*meal[1]);
                 }
                 else if(meal[0] == 'poha'){
                     CaloriesIntake += (225*meal[1]);
                 }
-                else if(meal[0] == 'Plain paratha'){
+                else if(meal[0] == 'plain paratha'){
                     CaloriesIntake += (175*meal[1]);
                 }
-                else if(meal[0] == 'Aloo paratha'){
+                else if(meal[0] == 'aloo paratha'){
                     CaloriesIntake += (275*meal[1]);
                 }
                 else if(meal[0] == 'sugar'){
@@ -133,15 +133,13 @@ router.post('/',async(req,res)=>{
             });
             
             //Total calories Intake in the AfterNoon
-            if(AfterNoonMeal == ''){
+            AfterNoonMeal.forEach((meal)=>{
+                meal.toLowerCase();
+                if(meal[0] == 'roti sabzi'){
 
-            }
-            else if(AfterNoonMeal == ''){
-
-            }
-            else if(AfterNoonMeal == ''){
-
-            }
+                    
+                }
+            })
             // And so on
 
             //Total calories Intake in the Evening

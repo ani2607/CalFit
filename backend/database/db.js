@@ -2,9 +2,9 @@
 import mongoose from 'mongoose';
 
 
-const dbConnection = async()=>{
+ const dbConnection = async()=>{
     try {
-        const res = await mongoose.connect(process.env.MONGODB_URL);
+        const res = await mongoose.connect(process.env.MONGODB_URL2);
         
         if(res){
             console.log('database connected');
@@ -14,5 +14,6 @@ const dbConnection = async()=>{
         console.log(error.message);   
     }
 }
+
 
 export default dbConnection;

@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import express from 'express';
-import databaseConnection from './database/db.js';
+import dbConnection from './database/db.js';
 import loginRoute from './router/User/loginRoute.js';
 import signupRoute from './router/User/signupRoute.js';
 import cors from 'cors';
@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 
 
 // connecting the database
-databaseConnection();
+dbConnection();
 
 app.use(cors({
     origin : 'http://localhost:5173',
