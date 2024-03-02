@@ -9,15 +9,21 @@ const Login = () => {
     const [email,setEmail] = useState('');
     const [password , setPassword] = useState('');
     const [navigate , setNavigate] = useState(false);
+    const data = {
+      'email' : email,
+      'password' : password
+  }
 
     const handleSubmit = async(e)=>{
          e.preventDefault();
         try {
             // const res = await()
             const res = await fetch(`${backendUrl}/login`,{
-                method : 'POST',
-                credentials : "include"
-            })
+              method : 'POST',
+              headers: {"Content-Type": "application/json"},
+              body : JSON.stringify(data),
+              credentials : "include"
+          });
 
             console.log(res);
             alert("successfully logged in");

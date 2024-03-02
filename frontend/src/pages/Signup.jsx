@@ -9,6 +9,9 @@ const Login = () => {
     const [email,setEmail] = useState('');
     const [password , setPassword] = useState('');
     const [navigate , setNavigate] = useState(false);
+    const data = {
+      username,email,password
+    };
 
     const handleSubmit = async(e)=>{
          e.preventDefault();
@@ -16,7 +19,9 @@ const Login = () => {
             // const res = await()
             const res = await fetch(`${backendUrl}/signup`,{
                 method : 'POST',
-                credentials : "include"
+                headers: {"Content-Type": "application/json"},
+                body:JSON.stringify(data)
+
             })
 
             console.log(res);
