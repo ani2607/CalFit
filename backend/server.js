@@ -6,7 +6,7 @@ import signupRoute from './router/User/signupRoute.js';
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 import isAuth  from './middleware/authentication.js';
-import bmrRoute from './router/BMR_Calculator.js';
+import bmrRoute from './router/BMR_Calculator/BMR_CalRoute.js';
 
 dotenv.config();
 

@@ -1,11 +1,18 @@
 import { Router } from 'express';
+
 const router = Router();
 
 router.post('/',async(req,res)=>{
-    const {BodyWeight,Age,Height,Gender,ActivityFactor} = req.body;
+    console.log(req.body);
+    const BodyWeight = req.body.bodyWeight;
+    const Age = req.body.age;
+    const Height = req.body.height;
+    const Gender = req.body.gender;
+    const ActivityFactor = req.body.activity;
+    // const {BodyWeight,Age,Height,Gender,ActivityFactor} = req.body;
 
     try {
-        let BMR = 0;
+        let BMR ;
         //Calculation of final BMR --> Total clories required for the whole day     (total calories == BMR)
         if(Gender == 'Male'){
             BMR = (10*BodyWeight) + (6.25*Height) - (5*Age) + 5;
@@ -53,6 +60,7 @@ router.post('/',async(req,res)=>{
                 BMR = BMR*1.9;
             }
         }
+        console.log(BMR);
         res.status(200).json({"BMR":BMR});
 
     } catch (error) {

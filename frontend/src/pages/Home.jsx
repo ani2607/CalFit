@@ -1,7 +1,18 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Typewriter from "typewriter-effect";
+import {Navigate} from 'react-router-dom'
 
 const Home = () => {
+
+  const [navigate,setNavigate] = useState(false);
+
+
+  if(navigate){
+    return <Navigate to={'/bmr'} />
+  }
+
+
   return (
     <>
       <nav>
@@ -29,6 +40,9 @@ const Home = () => {
             />
           </span>
         </h2>
+        </div>
+        <div className="mt-10">
+        <button onClick={()=> setNavigate(true)} className="text-2xl bg-green-700 rounded p-1">Check Your Fitness</button>
         </div>
       </div>
     </>

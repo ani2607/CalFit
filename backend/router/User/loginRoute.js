@@ -43,7 +43,7 @@ router.post('/',async(req,res)=>{
             // console.log('password matches');
             // assign jwt to the cookies 
              const token = jwt.sign({dbUsername,dbEmail,id:dbres._id},secret)
-             console.log(token);
+            //  console.log(token);
             res.status(200).cookie('token', token).json({dbUsername,id:dbres._id});
 
         }else{
