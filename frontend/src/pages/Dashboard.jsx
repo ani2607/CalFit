@@ -1,6 +1,8 @@
 import Navbar from "../components/Navbar"
 
 const DashBoard = () => {
+  const[calorie,setCalorie]=('');
+  const[health,setHealth]=('');
   return (
     <>
       <nav>
