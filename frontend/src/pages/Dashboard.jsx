@@ -1,6 +1,8 @@
 import Navbar from "../components/Navbar"
 
 const DashBoard = () => {
+  const[calorie,setCalorie]=('');
+  const[health,setHealth]=('');
   return (
     <>
       <nav>
@@ -27,13 +29,13 @@ const DashBoard = () => {
         <div class=" mx-auto place-items-center max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Your Calorie</h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">Calorie will be displayed</p>
+          <p class="font-normal text-gray-700 dark:text-gray-400">{setCalorie}</p>
 
         </div>
         <div class=" mx-auto max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Your Health</h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">Fitness will be displayed</p>
+          <p class="font-normal text-gray-700 dark:text-gray-400">{setHealth}</p>
 
         </div>
       </div>
