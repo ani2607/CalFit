@@ -2,17 +2,13 @@ import { Router } from 'express';
 const router = Router();
 
 router.post('/',async(req,res)=>{
-    const {BodyWeight,Age,Height,Gender,ActivityFactor,TypeOfDiet} = req.body;
-    const MorningMeal = req.body.MorningMeal;
-    const AfterNoonMeal = req.body.AfterNoonMeal;
-    const EveningMeal = req.body.EveningMeal;
-    const NightMeal = req.body.NightMeal;
+    const {BodyWeight,Age,Height,Gender,ActivityFactor} = req.body;
 
     try {
-
+        let BMR = 0;
         //Calculation of final BMR --> Total clories required for the whole day     (total calories == BMR)
         if(Gender == 'Male'){
-            let BMR = (10*BodyWeight) + (6.25*Height) - (5*Age) + 5;
+            BMR = (10*BodyWeight) + (6.25*Height) - (5*Age) + 5;
             if(ActivityFactor == 'Sedentary'){
                 // little to no exercise, desk job
                 BMR = BMR*1.2;
@@ -35,7 +31,7 @@ router.post('/',async(req,res)=>{
             }
         }
         else{
-            let BMR = (10*BodyWeight) + (6.25*Height) - (5*Age) - 161;
+            BMR = (10*BodyWeight) + (6.25*Height) - (5*Age) - 161;
             if(ActivityFactor == 'Sedentary'){
                 // little to no exercise, desk job
                 BMR = BMR*1.2;
@@ -57,97 +53,7 @@ router.post('/',async(req,res)=>{
                 BMR = BMR*1.9;
             }
         }
-  
-        let CaloriesIntake = 0;
-        if(TypeOfDiet == 'Veg'){
-            //Total calories intake in the morning
-            MorningMeal.forEach(meal => {
-                meal[0].toLowerCase();
-                if(meal[0] == 'oats'){
-                    CaloriesIntake += (150*meal[1]);
-                }
-                else if(meal[0] == 'yogurt'){
-                    CaloriesIntake += (120*meal[1]);
-                }
-                else if(meal[0] == 'mixed berries'){
-                    CaloriesIntake += (40*meal[1]);
-                }
-                else if(meal[0] == 'avacado'){
-                    CaloriesIntake += (120*meal[1]);
-                }
-                else if(meal[0] == 'egg'){
-                    CaloriesIntake += (70*meal[1]);
-                }
-                else if(meal[0] == 'granola'){
-                    CaloriesIntake += (200*meal[1]);
-                }
-                else if(meal[0] == 'chpped vegetables'){
-                    CaloriesIntake += (50*meal[1]);
-                }
-                else if(meal[0] == 'almond milk'){
-                    CaloriesIntake += (15*meal[1]);
-                }
-                else if(meal[0] == 'wheat toast'){
-                    CaloriesIntake += (160*meal[1]);
-                }
-                else if(meal[0] == 'peanut butter'){
-                    CaloriesIntake += (190*meal[1]);
-                }
-                else if(meal[0] == 'cheese'){
-                    CaloriesIntake += (80*meal[1]);
-                }
-                else if(meal[0] == 'almonds'){
-                    CaloriesIntake += (206*meal[1]);
-                }
-                else if(meal[0] == 'honey'){
-                    CaloriesIntake += (64*meal[1]);
-                }
-                else if(meal[0] == 'upma'){
-                    CaloriesIntake += (275*meal[1]);
-                }
-                else if(meal[0] == 'uttapam'){
-                    CaloriesIntake += (225*meal[1]);
-                }
-                else if(meal[0] == 'idli Sambar'){
-                    CaloriesIntake += (275*meal[1]);
-                }
-                else if(meal[0] == 'dosa with coconut chutney'){
-                    CaloriesIntake += (325*meal[1]);
-                }
-                else if(meal[0] == 'poha'){
-                    CaloriesIntake += (225*meal[1]);
-                }
-                else if(meal[0] == 'plain paratha'){
-                    CaloriesIntake += (175*meal[1]);
-                }
-                else if(meal[0] == 'aloo paratha'){
-                    CaloriesIntake += (275*meal[1]);
-                }
-                else if(meal[0] == 'sugar'){
-                    CaloriesIntake += (48*meal[1]);
-                }
-                else{
-                    CaloriesIntake += (meal[1]);
-                }
-                
-            });
-            
-            //Total calories Intake in the AfterNoon
-            AfterNoonMeal.forEach((meal)=>{
-                meal.toLowerCase();
-                if(meal[0] == 'roti sabzi'){
-
-                    
-                }
-            })
-            // And so on
-
-            //Total calories Intake in the Evening
-
-        }
-        else{
-
-        }
+        res.status(200).json({"BMR":BMR});
 
     } catch (error) {
         // console.log(error);
